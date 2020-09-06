@@ -333,7 +333,6 @@ export default {
                 "RootTumbleweed": "The Tangled Pass",
                 "RootEnt": "The Choking Hallow",
                 "RootDragon": "The Ash Yard",
-                "LizAndLiz": "Land's End",
                 "Splitter": "Leto's Lab (Research Station Alpha)"
               },
               side_dungeons: {
@@ -923,6 +922,8 @@ export default {
                   siege = "The Ravager Shrine";
                 if (siege == "Shaman Flames")
                   siege = "Grave Siege";
+                if (siege == "Liz And Liz")
+                  siege = "A Tale of Two Liz's"
                 if (LOG) console.log(world + " " + event_type + ": " + subregion + ", Objective: " + siege);
                 sav_pointer["sieges"].push({
                   "world": world,
