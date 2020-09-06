@@ -80,6 +80,9 @@ export default {
       div_class: function() {
           return 'world-' + this.name.toLowerCase() + ' world-div';
       }
+  },
+  created() {
+      console.log(this.sav);
   }
 }
 </script>

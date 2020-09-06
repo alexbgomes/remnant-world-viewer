@@ -46,7 +46,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="main_all_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="main_all_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_all_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_all_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="main_all_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="main_all_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="main_all_filters['world_bosses']" />
@@ -62,7 +62,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="main_earth_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="main_earth_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_earth_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_earth_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="main_earth_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="main_earth_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="main_earth_filters['world_bosses']" />
@@ -75,7 +75,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="main_rhom_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="main_rhom_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_rhom_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_rhom_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="main_rhom_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="main_rhom_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="main_rhom_filters['world_bosses']" />
@@ -88,7 +88,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="main_corsus_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="main_corsus_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_corsus_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_corsus_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="main_corsus_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="main_corsus_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="main_corsus_filters['world_bosses']" />
@@ -101,7 +101,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="main_yaesha_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="main_yaesha_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_yaesha_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="main_yaesha_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="main_yaesha_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="main_yaesha_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="main_yaesha_filters['world_bosses']" />
@@ -138,7 +138,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="clementine_all_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="clementine_all_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="clementine_all_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="clementine_all_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="clementine_all_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="clementine_all_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="clementine_all_filters['world_bosses']" />
@@ -152,7 +152,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="clementine_earth_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="clementine_earth_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="clementine_earth_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="clementine_earth_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="clementine_earth_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="clementine_earth_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="clementine_earth_filters['world_bosses']" />
@@ -165,7 +165,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="clementine_reisum_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="clementine_all_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="clementine_reisum_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="clementine_reisum_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="clementine_reisum_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="clementine_reisum_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="clementine_reisum_filters['world_bosses']" />
@@ -200,7 +200,7 @@
                       <p class="filters">Filters</p>
                       <q-toggle color="negative" label="Side Dungeons" dark v-model="adv_filters['side_dungeons']" />
                       <q-toggle color="negative" label="Sieges" dark v-model="adv_filters['sieges']" />
-                      <q-toggle color="negative" label="Points of Interest" dark v-model="adv_filters['poi']" />
+                      <q-toggle color="negative" label="Points of Interest" dark v-model="adv_filters['pois']" />
                       <q-toggle color="negative" label="Items" dark v-model="adv_filters['items']" />
                       <q-toggle color="negative" label="Minibosses" dark v-model="adv_filters['minibosses']" />
                       <q-toggle color="negative" label="World Bosses" dark v-model="adv_filters['world_bosses']" />
@@ -255,7 +255,7 @@ export default {
             splitter_model: 20,
             main_all_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -263,7 +263,7 @@ export default {
             },
             main_earth_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -271,7 +271,7 @@ export default {
             },
             main_rhom_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -279,7 +279,7 @@ export default {
             },
             main_corsus_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -287,7 +287,7 @@ export default {
             },
             main_yaesha_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -295,7 +295,7 @@ export default {
             },
             clementine_all_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -303,7 +303,7 @@ export default {
             },
             clementine_earth_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -311,7 +311,7 @@ export default {
             },
             clementine_reisum_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -319,7 +319,7 @@ export default {
             },
             adv_filters: {
               side_dungeons: true,
-              poi: true,
+              pois: true,
               minibosses: true,
               world_bosses: true,
               sieges: true,
@@ -392,19 +392,20 @@ export default {
                 "FlickeringHorror": "Hall of Whispers",
                 "BarbTerror": "Needle Lair",
                 "SwampGuardian": "The Grotto",
-                "IskalTemple": "Queen's Temple"
+                "QueensTemple": "Iskal Temple" //appears as side dungeon I believe
               },
               side_dungeons: {
                 "Wisp": "Circlet Hatchery",
                 "FetidPool": "Fetid Pools",
-                "BrainBug": "The Strange Pass" //Mar'Gosh's Lair
+                "BrainBug": "The Strange Pass", //Mar'Gosh's Lair
+                "QueensTemple": "Iskal Temple"
               },
               dungeon_bosses: {
                 "Tyrant": "The Thrall",
                 "SlimeHulk": "Canker",
                 "FlickeringHorror": "Dream Eater",
                 "BarbTerror": "Barbed Terror",
-                "IskalTemple": "Iskal Queen" //needs testing
+                "QueensTemple": "Iskal Queen" //needs testing
               },
               world_bosses: {
                 "Fatty": "The Unclean One",
@@ -579,8 +580,8 @@ export default {
             file_reader.readAsText(this.save_file);
         },
         process_data(evt) {
-          let DEBUG = false;
-          let LOG = false;
+          let DEBUG = true;
+          let LOG = true;
           let all_data = evt.target.result;
 
           this.has_clementine = all_data.indexOf('/Game/World_Rural/Templates/Template_Rural_Overworld_01.Template_Rural_Overworld_01') !== -1;
@@ -857,6 +858,8 @@ export default {
                   dungeon = "Supply Run";
                 if (dungeon == "Doe Shrine")
                   dungeon = "The Doe Shrine";
+                if (dungeon == "Queens Temple")
+                  dungeon = "Queen's Temple (Optional Boss: Iskal Queen)"
                 if (dungeon == "Frozen Lords")
                   dungeon = "Magir Test";
                 if (dungeon == "Ice Skimmer")
