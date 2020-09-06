@@ -11,7 +11,7 @@
           align="justify"
           narrow-indicator
         >
-          <q-tab v-if="!has_clementine" name="main_campaign" label="From the Ashes Campaign" />
+          <q-tab v-if="!has_clementine && campaign_not_missing" name="main_campaign" label="From the Ashes Campaign" />
           <q-tab v-if="has_clementine" name="clementine_campaign" label="Subject 2923 Campaign" />
           <q-tab v-if="has_adventure" name="adventure_mode" label="Adventure Mode" />
         </q-tabs>
@@ -242,6 +242,9 @@ export default {
         if (this.adventure_world == "Reisum")
           res =  "text-light-blue-9";
         return res;
+      },
+      campaign_not_missing: function() {
+        return this.earth_sav['world_bosses'].length !== 0;
       }
     },
     data () {
@@ -999,6 +1002,9 @@ export default {
               console.log(this.adv_sav);
           }
 
+          if (this.earth_sav['world_bosses'].length == 0 && this.reisum_sav['world_bosses'].length == 0)
+            this.tab = 'adventure_mode';
+
         }
     },
     components: {
@@ -1006,7 +1012,6 @@ export default {
     },
     created() {
         this.extract_data();
-        console.log("HAS CLEM: " + this.has_clementine);
     }
 }
 </script>

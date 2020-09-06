@@ -1,6 +1,8 @@
 <template>
   <q-page-container>
     <q-page class="main-display">
+      <div class="inline-wrapper">
+      <div class="file-box-wrapper" @click="reset_file">
       <q-file class="file-box" outlined label="Select or Drop .sav File Here" counter accept=".sav" @input="handle_update" v-model="file">
         <template v-slot:prepend>
           <q-icon name="fas fa-file-upload" />
@@ -10,6 +12,8 @@
           File size
         </template>
       </q-file>
+      </div>
+      </div>
       <display v-if="file !== null" :save_file="file" :key="key"/>
       <about-box v-if="file == null" />
     </q-page>
@@ -35,8 +39,13 @@ export default {
     AboutBox
   },
   methods: {
-    handle_update() {
+    handle_update(file) {
       this.key++;
+      console.log(file);
+    },
+    reset_file() {
+      this.file = null;
+      console.log("Reset called");
     }
   }
 }
@@ -48,12 +57,18 @@ export default {
   }
   .file-box {
     width: 20em !important;
-    margin: auto;
+    /* margin: auto; */
     background-color: black;
     box-shadow: 0px 0px 12px 4px #BD2A23;
   }
   .file-box:hover {
     box-shadow: 0px 0px 12px 4px #ffffff;
+  }
+  .inline-wrapper {
+    text-align: center;
+  }
+  .file-box-wrapper {
+    display: inline-block;
   }
   .q-field__control {
     background-color: black;
