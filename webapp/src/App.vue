@@ -14,6 +14,15 @@ import BottomFooter from './components/BottomFooter'
 export default {
   name: 'LayoutDefault',
 
+  metaInfo: {
+    title: 'Remnant World Viewer',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'description', content: 'A tool for Remnant: From the Ashes to determine your campaign and adventure mode rolls.' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ]
+  },
+
   components: {
     TopBanner,
     MainPage,
@@ -23,10 +32,6 @@ export default {
   data () {
     return {
     }
-  },
-
-  created () {
-    document.title = "World Viewer";
   }
 }
 </script>

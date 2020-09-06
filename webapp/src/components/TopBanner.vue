@@ -5,6 +5,7 @@
                 <q-img
                     class="banner-img"
                     :src="img"
+                    alt="players fighting off the root"
                     />
             </q-header>
         </div>
