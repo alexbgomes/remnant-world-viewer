@@ -580,8 +580,8 @@ export default {
             file_reader.readAsText(this.save_file);
         },
         process_data(evt) {
-          let DEBUG = true;
-          let LOG = true;
+          let DEBUG = false;
+          let LOG = false;
           let all_data = evt.target.result;
 
           this.has_clementine = all_data.indexOf('/Game/World_Rural/Templates/Template_Rural_Overworld_01.Template_Rural_Overworld_01') !== -1;
