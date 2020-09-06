@@ -39,13 +39,11 @@ export default {
     AboutBox
   },
   methods: {
-    handle_update(file) {
+    handle_update() {
       this.key++;
-      console.log(file);
     },
     reset_file() {
       this.file = null;
-      console.log("Reset called");
     }
   }
 }
@@ -57,7 +55,6 @@ export default {
   }
   .file-box {
     width: 20em !important;
-    /* margin: auto; */
     background-color: black;
     box-shadow: 0px 0px 12px 4px #BD2A23;
   }
