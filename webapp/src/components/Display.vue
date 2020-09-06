@@ -577,11 +577,11 @@ export default {
             file_reader.readAsText(this.save_file);
         },
         process_data(evt) {
-          let DEBUG = false;
-          let LOG = false;
+          let DEBUG = true;
+          let LOG = true;
           let all_data = evt.target.result;
 
-          this.has_clementine = all_data.indexOf('/Game/Campaign_Clementine') !== -1;
+          this.has_clementine = all_data.indexOf('/Game/World_Rural/Templates/Template_Rural_Overworld_01.Template_Rural_Overworld_01') !== -1;
           if (this.has_clementine) this.tab = "clementine_campaign";
           this.has_adventure = all_data.indexOf('Adventure') !== -1; //fresh characters have no instances of adventure mode content
 
@@ -1003,6 +1003,7 @@ export default {
     },
     created() {
         this.extract_data();
+        console.log("HAS CLEM: " + this.has_clementine);
     }
 }
 </script>
