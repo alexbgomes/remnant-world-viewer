@@ -584,7 +584,7 @@ export default {
           let LOG = false;
           let all_data = evt.target.result;
 
-          this.has_clementine = all_data.indexOf('/Game/World_Rural/Templates/Template_Rural_Overworld_01.Template_Rural_Overworld_01') !== -1;
+          this.has_clementine = all_data.indexOf('/Game/World_Rural/Templates/Template_Rural_Overworld') !== -1;
           if (this.has_clementine) this.tab = "clementine_campaign";
           this.has_adventure = all_data.indexOf('Adventure') !== -1; //fresh characters have no instances of adventure mode content
 
@@ -684,7 +684,7 @@ export default {
          let clementine_campaign_data_block;
 
           if (this.has_clementine) {
-            clementine_campaign_data_block = lint_dupes(all_data.substring(all_data.indexOf("/Game/World_Rural/Templates/Template_Rural_Overworld_01.Template_Rural_Overworld_01") + 84,
+            clementine_campaign_data_block = lint_dupes(all_data.substring(all_data.indexOf("/Game/World_Rural/Templates/Template_Rural_Overworld") + 53,
                                                                         all_data.indexOf("/Game/Campaign_Clementine/Quests/WardPrime/Quest_WardPrime_Template.Quest_WardPrime")
                                                                         ).split("Game"
                                                                         ).filter(data => data.startsWith("/World_") && data.indexOf("Template_Snow_Dungeon") == -1));
@@ -713,7 +713,7 @@ export default {
                                                                     ).filter(data => data.indexOf("Adventure") !== -1
                                                                     )[1
                                                                     ].split("Game"
-                                                                    ).filter(data => data.startsWith("/World_") && data.indexOf("Template_Snow_Dungeon") == -1));
+                                                                    ).filter(data => data.startsWith("/World_") && data.indexOf("Template_Snow_Dungeon") == -1 && !data.startsWith("/World_Labyrinth")));
 
             adventure_world = lint_dupes(all_data.substring(all_data.lastIndexOf("UsageCount"),
                                                     all_data.lastIndexOf("/Game/World_Base/Quests/Quest_Ward13/")
