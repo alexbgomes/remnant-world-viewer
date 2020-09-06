@@ -942,6 +942,8 @@ export default {
                   item = "Letos Amulet";
                 if (item == "Trait Book")
                   item = "Tome of Knowledge";
+                if (item == "Aces Coin")
+                  item = "Strange Coin";
                 if (LOG) console.log(world + " " + event_type + ": " + overworld + ", Item: " + item);
                 sav_pointer["items"].push({
                   "world": world,
