@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/remnant-world-viewer/',
   pluginOptions: {
     quasar: {
       importStrategy: 'kebab',
