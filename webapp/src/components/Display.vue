@@ -242,9 +242,6 @@ export default {
         if (this.adventure_world == "Reisum")
           res =  "text-light-blue-9";
         return res;
-      },
-      campaign_not_missing: function() {
-        return this.earth_sav['world_bosses'].length !== 0;
       }
     },
     data () {
@@ -325,6 +322,7 @@ export default {
               sieges: true,
               items: true
             },
+            campaign_not_missing: true,
             has_clementine: false,
             has_adventure: false,
             adventure_world: "Unknown",
@@ -510,8 +508,8 @@ export default {
               MIST_FEN: "Swamp_Overworld_Zone2",
               VERDANT_STRAND: "Jungle_Overworld_Zone1",
               SCALDING_GLADE: "Jungle_Overworld_Zone2",
-              DROLNIR_WOODS: "Snow_Overworld_Zone1",
-              WARRENS: "Snow_Overworld_Zone2"
+              DROLNIIR_WOODS: "Snow_Overworld_Zone1",
+              DEEPFROST_EXPANSE: "Snow_Overworld_Zone2"
             },
             earth_sav: {
             side_dungeons: [],
@@ -580,13 +578,14 @@ export default {
             file_reader.readAsText(this.save_file);
         },
         process_data(evt) {
-          let DEBUG = false;
-          let LOG = false;
+          let DEBUG = true;
+          let LOG = true;
           let all_data = evt.target.result;
 
-          this.has_clementine = all_data.indexOf('/Game/World_Rural/Templates/Template_Rural_Overworld') !== -1;
+          this.campaign_not_missing = all_data.indexOf('/Game/Campaign_Main/Quest_Campaign_City.Quest_Campaign_City') !== -1;
+          this.has_clementine = all_data.indexOf('/Game/World_Rural/Templates/Template_Rural_Overworld_0') !== -1;
           if (this.has_clementine) this.tab = "clementine_campaign";
-          this.has_adventure = all_data.indexOf('Adventure') !== -1; //fresh characters have no instances of adventure mode content
+          this.has_adventure = all_data.indexOf('Quest_AdventureMode_') !== -1; //fresh characters have no instances of adventure mode content
 
           /*
           * * * * * * * * * * * * * * * * * * * * *
@@ -632,12 +631,16 @@ export default {
           */
 
           let lint_dupes = (data_block) => {
+            console.log("Linting: \n" + data_block);
             let dupe_indices = [];
             for (let idx = 0; idx < data_block.length - 1; idx++) {
               let next_sample = data_block[idx+1].split("/").slice(0, 4).join("/");
               let cur_sample = data_block[idx].split("/").slice(0, 4).join("/");
-              if (next_sample == cur_sample)
+              console.log("Comparing: \n\t'" + cur_sample + "' with \n\t'" + next_sample + "'");
+              if (next_sample == cur_sample) {
+                console.log("Duplicate found: " + cur_sample);
                 dupe_indices.push(idx+1);
+              }
             }
 
             let shift = 0;
@@ -663,7 +666,7 @@ export default {
           */
               
           let main_campaign_data_block = lint_dupes(all_data.substring(all_data.indexOf("/Game/Campaign_Main/Quest_Campaign_City.Quest_Campaign_City") + 60,
-                                                                       all_data.indexOf("/Game/Campaign_Main/Quest_Campaign_Ward13.Quest_Campaign_Ward13")
+                                                                       all_data.indexOf("/Game/Campaign_Main/Quest_Campaign_Main.Quest_Campaign_Main_C")
                                                                       ).split("Game"
                                                                       ).filter(data => data.startsWith("/World_")));
 
@@ -685,7 +688,7 @@ export default {
 
           if (this.has_clementine) {
             clementine_campaign_data_block = lint_dupes(all_data.substring(all_data.indexOf("/Game/World_Rural/Templates/Template_Rural_Overworld") + 53,
-                                                                        all_data.indexOf("/Game/Campaign_Clementine/Quests/WardPrime/Quest_WardPrime_Template.Quest_WardPrime")
+                                                                         all_data.indexOf("/Game/Campaign_Clementine/Quest_Campaign_Clementine.Quest_Campaign_Clementine_C")
                                                                         ).split("Game"
                                                                         ).filter(data => data.startsWith("/World_") && data.indexOf("Template_Snow_Dungeon") == -1));
 
@@ -706,20 +709,21 @@ export default {
           * 
           */
           let adventure_data_block;
-          let adventure_world;
-
-          if (this.has_adventure) {
-            adventure_data_block = lint_dupes(all_data.split("\n"
-                                                                    ).filter(data => data.indexOf("Adventure") !== -1
-                                                                    )[1
-                                                                    ].split("Game"
-                                                                    ).filter(data => data.startsWith("/World_") && data.indexOf("Template_Snow_Dungeon") == -1 && !data.startsWith("/World_Labyrinth")));
-
-            adventure_world = lint_dupes(all_data.substring(all_data.lastIndexOf("UsageCount"),
-                                                    all_data.lastIndexOf("/Game/World_Base/Quests/Quest_Ward13/")
+          let adventure_world = lint_dupes(all_data.substring(all_data.lastIndexOf("UsageCount"),
+                                                     all_data.lastIndexOf("/Game/World_Base/Quests/Quest_Ward13/")
                                                     ).split("Game"
                                                     ).filter(data => data.startsWith("/World_")
                                                     )[1].split("/")[1]);
+          let adventure_zone = adventure_world.substring(6, adventure_world.length);
+          let adventure_data_start = `/Game/World_${adventure_zone}/Quests/Quest_AdventureMode/Quest_AdventureMode_${adventure_zone}_0`; ///Game/World_Snow/Quests/Quest_AdventureMode/Quest_AdventureMode_Snow_0  |  /Game/World_Swamp/Quests/Quest_AdventureMode/Quest_AdventureMode_Swamp_0
+          let adventure_data_end = `/Game/World_${adventure_zone}/Quests/Quest_AdventureMode/Quest_AdventureMode_${adventure_zone}.Quest_AdventureMode_${adventure_zone}_C`; ///Game/World_Snow/Quests/Quest_AdventureMode/Quest_AdventureMode_Snow.Quest_AdventureMode_Snow_C
+          let adventure_data_start_offset = adventure_data_start.length + 1;
+          if (this.has_adventure) {
+            adventure_data_block = lint_dupes(all_data.substring(all_data.split(adventure_data_start, 2).join(adventure_data_start).length + adventure_data_start_offset,
+                                                                 all_data.indexOf(adventure_data_end)
+                                                                ).split("Game"
+                                                                ).filter(data => data.startsWith(`/${adventure_world}`) && data.indexOf("Template_Snow_Dungeon") == -1));
+
 
             if (adventure_world == "World_City" || adventure_world == "World_Rural")
               this.adventure_world = "Earth";
@@ -827,11 +831,11 @@ export default {
               else if (zone == this.overworlds.SCALDING_GLADE)
                 overworld = "The Scalding Glade";
 
-              else if (zone == this.overworlds.DROLNIR_WOODS)
+              else if (zone == this.overworlds.DROLNIIR_WOODS)
                 overworld = "Drolnir Woods";
 
-              else if (zone == this.overworlds.WARRENS)
-                overworld = "The Warrens";
+              else if (zone == this.overworlds.DEEPFROST_EXPANSE)
+                overworld = "Deepfrost Expanse";
 
               else 
                 overworld = "Unimplemented";
@@ -859,7 +863,7 @@ export default {
                 if (dungeon == "Doe Shrine")
                   dungeon = "The Doe Shrine";
                 if (dungeon == "Queens Temple")
-                  dungeon = "Queen's Temple (Optional Boss: Iskal Queen)"
+                  dungeon = "Queen's Temple (Optional Boss: Iskal Queen)";
                 if (dungeon == "Frozen Lords")
                   dungeon = "Magir Test";
                 if (dungeon == "Ice Skimmer")
@@ -881,8 +885,10 @@ export default {
                   poi = "Ancient Construct";
                 if (poi == "Wailing Wood")
                   poi = "Wailing Tree";
+                if (poi == "Brain Bug")
+                  poi = "Mar'Gosh's Lair";
                 if (poi == "Afterbirth")
-                  poi = "Krall Mother";
+                  poi = "Chillwind Hovel: Krall Mother";
                 if (LOG) console.log(world + " " + event_type + ": " + poi);
                 sav_pointer["pois"].push({
                   "world": world,
@@ -1005,7 +1011,7 @@ export default {
               console.log(this.adv_sav);
           }
 
-          if (this.earth_sav['world_bosses'].length == 0 && this.reisum_sav['world_bosses'].length == 0)
+          if (!this.campaign_not_missing && !this.has_clementine)
             this.tab = 'adventure_mode';
 
         }
